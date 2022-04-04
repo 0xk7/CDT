@@ -1,0 +1,86 @@
+---
+# tasks file for linux_add_users
+
+# Make sure ritsec user has been disabled
+- name: Remove ritsec user (if exists)
+  user:
+    name: "ritsec"
+    state: absent
+
+# FreeBSD uses a different shell, so we need a separate role for that
+- name: Add users, non FreeBSD
+  user:
+    name: "{{ item }}"
+    password: "{{ team_password | password_hash('sha512', team_salt) }}"
+    state: present
+    shell: /bin/bash
+  with_items: "{{ users }}"
+  when: ansible_os_family == "Debian" or ansible_os_family == "RedHat" or ansible_os_family == "Kali GNU/Linux"
+
+# Debian-based distributions use the "sudo" group for the admin users
+- name: Add admin users, Debian
+  user:
+    name: "{{ item }}"
+    password: "{{ team_password | password_hash('sha512', team_salt) }}"
+    state: present
+    shell: /bin/bash
+    groups:
+      - "sudo"
+  with_items: "{{ admin_users }}"
+  when: ansible_os_family == "Debian" or ansible_os_family == "Kali GNU/Linux"
+
+# ReHat uses the "wheel" group for the admins
+- name: Add admin users, RedHat, KaOS
+  user:
+    name: "{{ item }}"
+    password: "{{ team_password | password_hash('sha512', team_salt) }}"
+    state: present
+    shell: /bin/bash
+    groups:
+      - "wheel"
+  with_items: "{{ admin_users }}"
+  when: ansible_os_family == "RedHat"
+
+# FreeBSD uses the tcsh shell
+- name: Add users, FreeBSD
+  user:
+    name: "{{ item }}"
+    password: "{{ team_password | password_hash('sha512', team_salt) }}"
+    state: present
+    shell: /bin/tcsh
+  with_items: "{{ users }}"
+  when: ansible_os_family == "FreeBSD"
+
+# FreeBSD uses the tcsh shell and the "wheel" group
+- name: Add admin users, FreeBSD
+  user:
+    name: "{{ item }}"
+    password: "{{ team_password | password_hash('sha512', team_salt) }}"
+    state: present
+    shell: /bin/tcsh
+    groups:
+      - "wheel"
+  with_items: "{{ admin_users }}"
+  when: ansible_os_family == "FreeBSD"
+
+# Arch usernames need to be lowercased
+- name: Add users, Arch linux
+  user:
+    name: "{{ item | lower }}"
+    password: "{{ team_password | password_hash('sha512', team_salt) }}"
+    state: present
+    shell: /bin/bash
+  with_items: "{{ users }}"
+  when: ansible_os_family == "Archlinux"
+
+# Arch uses the "wheel" group for the admins
+- name: Add admin users, Arch linux
+  user:
+    name: "{{ item | lower }}"
+    password: "{{ team_password | password_hash('sha512', team_salt) }}"
+    state: present
+    shell: /bin/bash
+    groups:
+      - "wheel"
+  with_items: "{{ admin_users }}"
+  when: ansible_os_family == "Archlinux"

@@ -2,20 +2,20 @@
 - name: Create Working Directory
   ansible.builtin.include_tasks: set_working_dir.yaml
 
-- name: Create Wallpaper Directory
-  ansible.builtin.include_tasks: set_wallpaper_dir.yaml
+# - name: Create Wallpaper Directory
+#   ansible.builtin.include_tasks: set_wallpaper_dir.yaml
 
 - name: Set Temp DNS
   ansible.builtin.include_tasks: set_dns.yaml   
 
-- name: Ensure Chocolatey is Installed
-  ansible.builtin.include_tasks: ensure_chocolatey.yaml
+# - name: Ensure Chocolatey is Installed
+#   ansible.builtin.include_tasks: ensure_chocolatey.yaml
 
 - name:  Ensure windows update service is running
   ansible.builtin.include_tasks: enable_updater.yaml
   
-- name: Enable Firewall
-  ansible.builtin.include_tasks: enable_firewall.yaml
+# - name: Enable Firewall
+#   ansible.builtin.include_tasks: enable_firewall.yaml
 
 - name: Enable ICMP
   ansible.builtin.include_tasks: allow_icmp.yaml
@@ -29,8 +29,8 @@
 - name: Set Hostname
   ansible.builtin.include_tasks: set_hostname.yaml
 
-- name: Remove unattend.xml
-  ansible.builtin.include_tasks: remove_unattend.yaml
+# - name: Remove unattend.xml
+#   ansible.builtin.include_tasks: remove_unattend.yaml
 
 - name: Disable Autologin
   ansible.builtin.include_tasks: disable_auto_login.yaml

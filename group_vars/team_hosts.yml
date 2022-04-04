@@ -23,6 +23,19 @@ local_users:
   - "GA"
   - "grader"
 
+#########
+# LINUX #
+#########
+
+nix_add_users_accounts:
+  - "{{ local_users }}"
+  - "{{ domain_users }}"
+nix_add_users_admin_accounts:
+  - "{{ local_admins }}"
+  - "{{ domain_admins }}"
+nix_add_users_team_password: "{{ team_password }}"
+nix_add_users_team_salt: xNqoKZvvICmpe
+
 ###########
 # WINDOWS #
 ###########

@@ -1,0 +1,7 @@
+---
+# defaults file for linux_create_users
+
+users: "{{ nix_add_users_accounts }}"
+admin_users: "{{ nix_add_users_admin_accounts }}"
+team_password: "{{ nix_add_users_team_password }}"
+team_salt: "{{ nix_add_users_team_salt }}"
