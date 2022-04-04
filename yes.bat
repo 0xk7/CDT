@@ -10,3 +10,6 @@ net user grader /add
 net user grader Password123
 
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v updateRDStatus /t REG_DWORD /d 1 /f
+netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
+netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" protocol=icmpv4:8,any dir=in action=allow
