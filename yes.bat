@@ -9,6 +9,9 @@ net user GA Password123
 net user grader /add
 net user grader Password123
 
+net localgroup "Remote Desktop Users" /add student lab-worker TA GA grader
+net localgroup "WinRMRemoteWMIUsers__" /add student lab-worker TA GA grader
+
 reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server" /v updateRDStatus /t REG_DWORD /d 1 /f
 netsh advfirewall firewall set rule group="remote desktop" new enable=Yes
