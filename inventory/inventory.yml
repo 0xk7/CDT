@@ -6,51 +6,113 @@
     children:
     #hosts
     # LAN Hosts
-    arboretum:
+    claws:
       vars:
         ansible_host: "10.{{ team_number|int }}.1.1"
         host_octets: "1"
       hosts:
-        arboretum.team[01:16].brentwood.nj:
-    sternwood:
+        claws.team[01:02].rit.local:
+    salsaritas:
       vars:
         ansible_host: "10.{{ team_number|int }}.1.2"
         host_octets: "2"
       hosts:
-        sternwood.team[01:16].brentwood.nj:
-    limest:
+        salsaritas.team[01:02].rit.local:
+    daryll-laptop:
       vars:
         ansible_host: "10.{{ team_number|int }}.1.3"
         host_octets: "3"
       hosts:
-        limest.team[01:16].brentwood.nj:
-    laurast:
+        daryll-laptop.team[01:02].rit.local:
+    mycourses:
       vars:
         ansible_host: "10.{{ team_number|int }}.1.4"
         host_octets: "4"
       hosts:
-        laurast.team[01:16].brentwood.nj:
-          #falconave:
-          #vars:
-          #ansible_host: "10.{{ team_number|int }}.1.5"
-          #host_octets: "5"
-          #hosts:
-        #falconave.team[01:16].brentwood.nj:
-    kingsbylake:
+        mycourses.team[01:02].rit.local:
+    cyber-range:
       vars:
-        ansible_host: "10.{{ team_number|int }}.1.6"
-        host_octets: "6"
+      ansible_host: "10.{{ team_number|int }}.1.5"
+      host_octets: "5"
       hosts:
-        kingsbylake.team[01:16].brentwood.nj:
-    oldwarren:
+          cyber-range.team[01:02].rit.local:
+    
+#Cloud
+    sis:
       vars:
-        ansible_host: "10.{{ team_number|int }}.1.7"
-        host_octets: "7"
+        ansible_host: "10.{{ team_number|int }}.2.1"
+        host_octets: "5"
       hosts:
-        oldwarren.team[01:16].brentwood.nj:
-    windowct:
+          sis.team[01:02].rit.local:
+    munson-laptop:
       vars:
-        ansible_host: "10.{{ team_number|int }}.1.69"
-        host_octets: "69"
+        ansible_host: "10.{{ team_number|int }}.2.2"
+        host_octets: "5"
       hosts:
-        windowct.team[01:16].brentwood.nj:
+          munson-laptop.team[01:02].rit.local:
+    banjo:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.2.3"
+        host_octets: "5"
+      hosts:
+          banjo.team[01:02].rit.local:
+    vase:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.2.4"
+        host_octets: "5"
+      hosts:
+          vase.team[01:02].rit.local:
+
+    windows:
+      children:
+        #lan
+        claws:
+        salsaritas:
+        daryll-laptop:
+        #cloud
+        sis:
+        munson-laptop:
+
+    linux:
+      children:
+        #lan
+        mycourses:
+        cyber-range:
+        #cloud
+        banjo:
+        vase:
+
+    team_hosts:
+      vars:
+        no_dns: False
+      children:
+        #lan
+        claws:
+        salsaritas:
+        daryll-laptop:
+        mycourses:
+        cyber-range:
+        #cloud
+        sis:
+        munson-laptop:
+        banjo:
+        vase:
+
+    lan:
+      vars:
+        subbnet_ish: "10.{{ team_number|int}}.1."
+      children:
+        claws:
+        salsaritas:
+        daryll-laptop:
+        mycourses:
+        cyber-range:
+
+    cloud:
+      vars:
+        subbnet_ish: "10.{{ team_number|int}}.2."
+      children:
+        sis:
+        munson-laptop:
+        banjo:
+        vase:

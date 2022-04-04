@@ -1,0 +1,60 @@
+---
+# Users
+domain_admins:
+  - "Munson"
+  - "Sumita"
+  - "Pelletier"
+  - "Olson"
+  - "Stackpole"
+domain_users:
+  - "Weissman"
+  - "Hamza"
+  - "Brigden"
+  - "Park"
+local_admins:
+  - "sylvia"
+  - "bennyg"
+  - "eleanor"
+  - "roger"
+local_users:
+  - "Weissman"
+  - "Hamza"
+  - "Brigden"
+  - "Park"
+
+#########
+# LINUX #
+#########
+
+nix_add_users_accounts:
+  - "{{ local_users }}"
+nix_add_users_admin_accounts:
+  - "{{ local_admins }}"
+  - "{{ domain_admins }}"
+nix_add_users_team_password: "{{ team_password }}"
+nix_add_users_team_salt: xNqoKZvvICmpe
+
+###########
+# WINDOWS #
+###########
+
+#Domain Info
+netbios: "team{{ team_number }}"
+
+# windows_create_local_users
+win_createlocalusers_local_admins: "{{ local_admins }}"
+win_createlocalusers_local_users: "{{ local_users }}"
+win_createlocalusers_team_password: "{{ team_password }}"
+
+# windows_deploy_dc
+win_deploydc_team_password: "{{ team_password }}"
+win_deploydc_domain: "{{ domain }}"
+win_deploydc_netbios: "{{ netbios }}"
+win_deploydc_domain_admins: "{{ domain_admins }}"
+win_deploydc_domain_users: "{{ domain_users }}"
+
+# windows_join_domain
+win_joindomain_team_password: "{{ team_password }}"
+win_joindomain_netbios: "{{ netbios }}"
+win_joindomain_dc_ip: "{{ dc_ip }}"
+win_joindomain_domain: "{{ domain }}"

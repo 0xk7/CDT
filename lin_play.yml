@@ -1,0 +1,8 @@
+---
+- name: Create linux users
+  hosts: team_hosts:&linux:!millington
+  roles:
+    - linux_create_users
+  tags:
+    - linux
+    - users
