@@ -58,7 +58,7 @@
 
 #deploy dc and create dns records
 - name: Deploy DC and create Domain
-  hosts: arboretum
+  hosts: claws
   roles:
     - windows_deploy_dc
     - windows_deploy_dns_server
@@ -70,7 +70,7 @@
 
 # create local users and join domain
 - name: Join boxes to Domain
-  hosts: windows:&team_hosts:!arboretum:!sternwood
+  hosts: windows:&team_hosts:!claws
   roles:
     - windows_create_local_users
     - windows_join_domain
