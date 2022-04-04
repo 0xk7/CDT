@@ -5,14 +5,4 @@ all:
       vars:
         no_dns: True
         ansible_become: yes
-        ansible_user: whiteteam
-        ansible_ssh_private_key_file: ~/.ssh/ists_deploy_key # is this the right path
-      hosts:
-        deploy.ists.io:
-        store.ists.io:
-        game.ists.io:
-        vpn.ists.io:
-        scoring.ists.io:
-        beat.ists.io:
-        ctf.ists.io:
-        ctfd.ists.io:
+        ansible_user: grayteam

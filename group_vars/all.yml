@@ -1,0 +1,13 @@
+---
+# Password Info
+whiteteam_user: grayteam
+whiteteam_password: 1mp0sterSUS
+
+ansible_password: "{{ whiteteam_password }}"
+ansible_user: "{{ whiteteam_user }}"
+
+# Domain Controller & Domain Info
+domain: "{{ inventory_hostname | replace(inventory_hostname_short, '') | replace('.', '', 1) }}"
+dc_ip: "10.{{ team_number|int }}.1.1"
+
+master_team_password: "{{ team_password }}"

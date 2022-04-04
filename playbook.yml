@@ -1,0 +1,209 @@
+---
+# The playbook for ISTS 2022
+
+# //\\//\\// MGMT \\//\\//\\//\\
+- hosts: public
+  roles:
+    - linux_deploy_ssh_public_keys
+  vars:
+    authorized_user: whiteteam
+    authorized_ssh_keys: ## brad, fred. kayla, enzo. tenchi. evan. alison. max. ayane. jason. brayden
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILbuXIAicqWmAbEmrmiEt3KX4f0xAWqoR1NNWtM96LR4 # deploy key
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCXo/r2XbIFN+z0+OoXeJDBKgEN3u8zVjo5jLZJUrBcSProkqW2fKi7yu8uH3joL0+JgLwiJkdOFsVG6KGmkqh/GrwHTMoikVTeoxSiUypr+1Cf4P8bY5EQW5he8kdLT2s8hpR4G7HpxUZrp7+qUWETohwzbSSt+LPN6epqIKF7+VjMRPh+VgKljPAmCO6uyD5Oqi1b0QT7Nb5R+UOd2rloV3QVBVD5r9xP4Hqa2cmUemOQwwas3+cAsli9CIN43xybcJvC5F6BSzjhq8BKo+Yc2L9t2azCVA8KiqF1WzFxXyyF4Zynj3j+2ZR2Vu6YdLZAT1VF28IF7RIajxUVBq4NlyMb30K+anxlvoigTq8XuZhJbfQGx0mMkXgXB1la8Rqp3Xe4KuwNLcQBMWSFNBrskEbvln44MkOoroXQvdSiNAy+8eMbJdWFJ9PnaDQHFKeez4bHMKHJVQtOlc8l0O86A84wS4Uk8HIKYBjByorh6jlOoilmY/tfsbqDkn1E1Ds= jason@howe
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDxVMqFjUtvC6NA8gPlvlHDe4pxXhUHw2PjdaX6mRRDBngb9xtVHRwN2j5OCNyCc403I13Bb3VuilfCXRpsGpH72IyuM+V/dBRqevWCDxYlcESs+LlyGc5qLfkYo57UNh6k73haPrhH2OA0Lx2JlskrUKlj7ogZRXm22ewt7HppcRtw1XaxfuZ1fwk+DdA6UxUPNgWKP0msXN0UZqHrvp+NMM2UhK3gpH02fFiaKOKtnEZ0fFSCLnnKtLDz/WdsjqcsGQR7f1fxJo6ktNn/jZm8t33DVw/MWTm7CXENzCxtQqJopHvM7g/dFsxmkhTZ2Av+3GecFQ+QjJLd39tyJnimNoMJljhHWAtaWtEI7LUVbWEjG/CdF5M5SYUzf5NOkBlbUIPPfvUc8Xeh5OU9yBRIvCiCEiGzMJEB9akJlfWFqSS+oDMPeWt7HMFs4RiwlGWa/U1Ngy+noJteYZ+7KLUBrmieSwtRuXdd9fxuOw7xqmHo1KKEjxOr9waAZywdT9c= kayla@ubuntu
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDTwtpaRW/QfzNfYiULZbXq9KgsXK0bOk+jW+Bum7Gszd+M6+C5Ep6L0J1DDtxTuTR2dB8wFQqAA38nSuLKkOSuV3cPKHTaiyoRf/SWrWIx6iRLX9BnocETLorSOUyAGXL5WcMJisjfaReOmb4HaGutLprjdZ/oJ7H5s43Xu10m59YW5OMkeLYtte5EyOJZsjnP725Gk5qnyuZsMPPGKOvknQcjllf8HA34c2kQ5jdNQWpXLRFHLr44ZTnTiwcq2GjZeZ8z1Lb9EsUgQmkOfpmb+Nu81XvrdI7NmWSDo0RCs7VH1TyHRrnPwcLhAEcrJsChVpQRydg6HiamyUS4xImr harkerbd@gmail.com
+      - ssh-rsa AAAAB2NzaC1yc2EAAAADAQABAAABgQDBvNxkwtH3ZvknxVJfRHMYrXMHSwxVfNV0u8jpTCFXU9wN4tisxK2Js0ZaxdqyPrgv4VV0aghbNVCaAgWQXzt1li9aTRYUCi+okKNKVIHfPE+kPv5bCBTkMbslMYPCbVxDXRwIkJff/MukWlAQwkoxbiXg45nbqArw2iCcF91/K9waE6p/Po43HkJx2MYaJCyUAeZ6/t2bIeXweR0JSlbYNPc4y99ibSZ/Qnz75ClsqwCvqLBg3tZ7l5HgMFEaOdhkrZmyhDjAQsO/4EmoudnagsdSNTaQrrp2qv5OiSQTc/onkTttHdnKl6gxiNxLrkbPwp/QJuuI/AJqyeBm+OYoHYpQs/536U9LhYl09CNdf9g6HcbSCccziARsMZFC7XAxsliWyBuzNa2hIyz2UwDTouxtAwhVxXZpliE3csUHvUOwll8581dhV+13Hwb9NdYWttXup2YaymgnGenn+R4SMQOo5ClTH8WtvTmATA/8KHkZW5v69Owz7wgrVEYECdM= kindtime@enzos-mbp.wireless.rit.edu
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7DNu9kMxxTjLffcyxNQnyrRcilS9Jj2j7y2xOBohvjJG5CcZawElF6sAe07v/vcVcPR/PpWFVD/DAsGoxiOyIhQv35nmC6yIQ2/nx5l1w0aya8IME+yPfQqMJHG8QLvc8qXN6nz1Plx5HqLIeSzCsixffmxWkRZaaN+b8Iq8ejWSe+nTChyaCntVUDb2YNyIA3IikMpsQl071ziEoPFmgL6h0SsbERps3r2+WFkk0/ZzNTw04gsFyzf37jyp++nU2wzVHkXP6DD4DJjMuMvc9PM+WDim1n3jEcbhxH2otZtCPEgHnGLO3epGjMC8ApLq4FPOLodjX+wirtWObfeZNi/XW0qmpIOUtQVGdABQgIw6oDqizwtW63DKyNdC06CgNsY6V7ZyIQ3ol9WjQUx8An3Q8bxNqLom9Pchxsxf5tg+K1I3zuBAdJZbZsacYB+SIQ5eNw1q3Bl/NXREDtCWiBS37EmBsJZsQpGHi3h5g5URiUPkujlKLgVdTGtKAKXM= k7@k7.local
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCuXE1/tQQx6aNJeUEUlksz877bKxtv4oNO3OaUbq4FJQTejXunUeYeoXSNU5RFvv6gFGlSSLMRAo+QRDlibibxIpWSbcxp8jli3/imEors1LjgnF7tdVFtyzWrnrRXgJ5GEz6m/LMJ64c4oMF20RbL5HMG0PkwiYqKmLHgvvY2m45r9Rax4e3DKX+Sym9y6bLQS6WP3Nsq0HFKDMA/uqZPYtNF8lkzXZ8mW5t75eOO2ks7HYiYRqbOUfWkttOMBhqRDlZc2G5eCAJ/bhjU74agRvgoMJWprTlDMpxmvLJkbPu1hpqgyNH2PhF2lfdC/KfYYreuywEPEp+1N/PMcm9oUGIwyzVL+GCpXR1xXVob1qxZ2h11vZBGUK1inz+lrNe14el2E7HJ1kjDPYMabux/bBLMGwcAknQeaAQHLLRNJWy/0JOVFEszQqDgvPjv6bOgu1C+EN7kDxhmSO7T7huoNbcdAX9MSPEqTbmXjsee9wIu1VZtk+oS9GhztEWFTlYN2pW5UHIRQshPKxbKvPdlLL4tgi1nq9RQ9+qD4U0qNqS9RaMXXk2NR6AjAQ1XwHGkIuK3vnIwtx4uPVdTbt8Lp0yCPW4C6CVzGBlDlo3KvmLmPp8R+Orcr3uFRN5Z7/oMpO6ZQiBh+BFax/Ve994mOjGToFSx2lDVatY1MXRyVQ== ayanenaito@MacBook-Pro.local
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDqhS8Zdeveph0Sam/u2i2fcKZAuT1AJJwA1M0K2sH62 aliso@Quenta-Silmarillion
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCbc3L1NktHpeAYuIdHTbGjoFVlB5OTcURcYwEOXBHRJZqR7VTOR2rBqH/SI3lfKt+jS8A93JM+9okGaaCL6EyEowJyWUVheNn5D4K8mAOCGEAdJJrYSQ+gG9Cd7cj1VoRVYfOZlfjTwSWRiPva1yOdzmXYHC7uDsqWz2+urc1Tl9zYcwFAPDjlqPEE73DttXBZH8Lg2tvBG9sZEf82ftTBQHIH7BQYp8Kq/z+/TCkogzhJVhi+xjf2i/l0FqACo2e5t05Q4fK1rbLu5HtTdMn4oUu5fYhe0W405ioVyRNjGgfvd4vB6qmdHp7BVxsHQwTZN+qvgi6+EklSlJkZTxgT evan@bozo
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDnNn/g95V0fzMvrKPRn8yl6GCML8+nC4cyw8nd0+rj/Kx3rPTWEfaTUTnxH0w1cIa3YbvFg8GtdoE/k33LQ0EwZ/IAfM5xdnI9MP8Cvcbv+4azrADRtuqDYUf7RcKJ2oOW8DVzKsxyShDJTODWLih9W+ZEfCg6NmUcpMr0iVx0IUT/Ct9ch4+Ymeug4P0uqrrbEUglsjVbwNuTfadDA/fVsSFZxp4GIqx9s+6GdjQF60YkYegpgtm03SfIsM7+LKu2u6DlTn8b6cQK51gzS47n0qqUOfI601D2ZCy7lvfqC4TxPJHNhZjfeR0JjHmgUm8nKel5okuMNbF9HyTexkjeb7RiUQcVOKi3Wq161mmQ24MLEOMOuXJgwzrfF1nUxnuojvywhxxjjwYYdS9DoSqyx2g6+edVrT/MLiaMpjbJe9drTNRk9IfIaUWAf0107SURGWJaQMrhUL+wtzjihT2mNHZzNgxeupbDeSDcHk0Epyus2GqxTV1MfkY1wh3qQH+/oVLfncrz42hCwB1RjbSm9vMLqPad9s8yblhfNq5DZam7CW+Z7jJbLlMsfm17HfmhI71Jvb/7CSBqdf+8cQ9Y1Tknacntp8+noMMMFdtpkxuLcrGqY2WUIEPMPYX4DPeutDrN+J12XXt14CtOQH441RT7r7o0PM761VolvKb6YQ== cardno:7122270
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQJO2xl87/mE7CUtPNE/6ToF+UrxYFfcTx47c+bfPNXtcM/LYlpN/qwKCZkAsunXQwOXj2y0abb9zC7yJpUNGFEgDNh3uNE7jvk692jgA+OHKM2w8BlgmqZyxBUmlEmx7Ck4U3Qi22NPp6c/LOPRIlfuJC4TtPcKiF3uy82xhltOPtn2FSJmjtJDUWB9PL10LkbxYirattxJdCMfGlTCGNLnzPWEfFSNUrL77yOulpOxsHRFiPaONkg4lJW4Bu46hf2Me/0NwVfHj9OBNYffNOstTZtMZWV0DLPEKLc2fW+VpYLx+b8Vusa6ZwSu0HA5dVE24SpOkzgrSHjm8nS/shMTTM6BQnfaED/9l0AWzoUqCk/nmiaY1MVSEe5I9uzX8Olvt9KOoRUrGr0r801c+vBbMn/1lMt2YfCCeOO2jsSuaKVB0GuWZJqCliS0+qF46Mqt6imHqulaQDPmC2H1YpMYL06/tTHgSlCi91pwpCCdMSKDdDnyrOWevlBCyEP9U= max@arch
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4veZLIE3gxtN3tAfTWmxpEM3MQP/nPdx1rxutjs7gQaEIMNsuk6I8L6p5fe+/FILWJMKN4/yOIv0M3jsd5eedjIBtDUksAySwu/19WR9787/iJDVEtVdNN7X33TO6LNDZfeAFWOQtBDVBTLBDHmUSY7Ni7kUN7St7pTFcYno4XV+8IVyprAHaQGp+a8m12a6acLYtQ0Ea2VK124ajSLH1Pb/VqGDYPGLdIWpid81jnqft+xeE60HSWuB2byuJN9Ebb2xLdujL0t+UYrDL4F3CsYGUzB6TUH1jNZ07v8QALsGyEJRjXob0BI4qRYVujS7encJDkB6vcACx0uo1QD7H brayden@DESKTOP-O2QESQB
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAipISDyohas2CkiH0qTNE180iWXDyCbA+rpl/usksZk1IlnnHgsh9aQ5f7RnFVNiloVEyeoHH4MqcmBSiirp09MaIFbIPtv0i0THk/abP//bvOsmRx3NjDILJypFOi4/csQQgAotF8yZzPkxv/7XVVgAcPCzdgLASAX9jNg8iNJG5nbkFHXyQ+Mu3+4ciyT9ZDeD4KIRnlj8U5YngKSWsAFT6reE6lZ9y8Lhi8yNMi/MBSwTh/Sp0TV5pi0+Nw6mjfQo34VBsjZf2DIqs0BqFoEHN2Q5OB7YQ/YXSRJvpe43KzNvZnIbaMapkQ8EziGRfHbFEud+itlMqwlWyJ0jLm3kmGa8EpQUKJNOVfbjKlNSp//Jigw4XRwegNSSTZq89vSPr4gb26flg2qUYXrBp/RD+j5oSZrWjfb3EpqH5UFos3QOmBni062XnKleTc51YAY6d8e5qNxavGlYPj5iICo+MiZ0QyUnX6QKXqd3gwllp7kIChhhXmggYHadKZtU= ataylor@Demigod
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTg18bjnA05lh3EHd9zLusk52K07b0j/kKAMul5BvEKV+SInTlcM4zoSdkJCaPRBp8bBZMJiot1nRA8/j2vJspWGWQ2miILc9LbrPQEeLajrBykBtMkAkKOWKkn315XGIv1yfciNHyXgeX9fhCfzN06J7O0liMoM+JkGuz1ohg2fcqYBZDpoB/itqUxPa7GrFDUBAq9MPjaTjGAt1rTCuIRmbHYkhJgOzw7A+oUqWT6Kqjz1oLdvu7i/xOIgJV22EcHRtM3vqKUYm/xjXE9kKbNnbhOqLdlLWzSObROJmQXGlJlFKaF54lr6Er+NXVKWgY7rYNUYKPQfPjnURbeRSognTiWCNI0+R5J1dl0L0YDHdH/mQTG8zSkZD8uGVqNMfg5RZB/i+iHYlapmoOxH2Vy1Qk73iki490ea6LD5BmwxU49IuRbzjQqQtBWIQ+GvI1UB4CpGu5pBcKfykCD3JrWZXN6WnVtPd1y9nRX6/ItNuXlCRCuJYwM2RZG+p4fs0= ayo@potatos-macbook.wireless.rit.edu
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC3FIWHpZ28fbkE8cHHcosiqDkfM7d3fEwkVszjMWh8PfC6hUlElwx6nqYG/0UzgkisG0SsAHUm+rThhxayA1fArSoFxOQyRqwcezQDjwELSHJQndo4Op4fxjskf+9qYmz9FuFM7NH/78DL62B9OHCJCpDEgqqOzuTKVS+D+zcOVaz2qVIHU7lSlDFJ2+XzM+wX0YEnF9iA5Yj8cmEoc81u8RiX8tmQx1koPHBvZ/AaLMsn3ARxf9gTY82zKDP7oqDGtb74Z/eSHMjk858y+g5AM2hylXQLYlcfJTiZiT46NMzRlnw5TAzB40/DTptZjyol0aAvHkx0nA+87tfXMGmIMHgB2f9heg6zl1FRW8LUSJzF6CZ0kKvOo4EWjtNNclU2sU2JI9/Y1wD5ca5BzaTs0JTDfmPZDVXJDl/Q6SJ/2w4vD1lhBDdiD4uXv7MKcF49ajO0bJwbheWfppymzfs6y3rbxdJ4c5Yz/Uhyqcp4cYgp+CBlsTdvbZzFv8HLlzU= clk6604@rit.edu
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDX417dR5/7g2Cew6UiYZQ3gIUEP7zyyEsVMMZfVkz8Tc8CsuXJc1unoK3D1r+7vMaRnS+BnCXitXgb2hABPVDG8nDSMVrqZM8Lb/9jaln0lLXrI4x9pmcnBbw4RDdRjji7kFvrWUsCaluTWBkCvLbOeo45+SpqEj6+aOXyYb3D4QkQUPmkD7GWLNEJONeQowixGaa0n5ndoDGw7ssSPTcHVE+CQutBzgtFXFjNGsMxAuV1Xu6PaZSDnJVXx/GfU1DupaCnQe4WpdtUUyEg7e/wzsNvpLBcSn6a3AaH7p0QE0nGjo8GLgXXU2jnqg5Uxclz/+xggnksQmqJfFEyed7h philo@stack-admin
+    tags:
+    - never
+    - mgmt
+    - mgmt_add_keys
+
+- hosts: vpn.ists.io
+  roles:
+    - linux_deploy_openvpn_server
+  vars:
+    # existing_vpn_ca_key_path: ../keys/ca.key
+    # existing_vpn_ca_certificate_path: ../keys/ca.crt
+    # existing_vpn_tls_secret_path: ../keys/ta.key
+    vpn_subnet: "172.16.128.0"
+    vpn_subnet_netmask: "255.255.128.0"
+    vpn_private_subnets:
+      "192.168.0.0": "255.255.0.0"
+      "172.16.0.0": "255.240.0.0"
+      "10.0.0.0": "255.0.0.0"
+      "172.24.0.0": "255.240.0.0"
+    vpn_dns_servers:
+      - "172.16.0.1"
+      - "172.16.0.2"
+    save_vpn_client_config: yes
+    vpn_client_config_dir: "{{ playbook_dir }}/../secrets/"
+  tags:
+    - never
+    - mgmt
+    - mgmt_vpn
+
+
+- hosts: deploy.ists.io
+  roles:
+    - linux_install_terraform
+    - linux_install_ansible
+    - role: linux_deploy_ssh_private_key
+      vars:
+        private_key_local_path: "~/ISTS-2022/ansible/ists_deploy_key"
+        private_key_name: ists_deploy_key
+    - role: clone_git_repos
+      vars:
+        private_key_local_path: "~/ISTS-2022/ansible/ists_deploy_key"
+        private_key_name: ists_deploy_key
+        repos:
+          ansible: git@gitlab.ritsec.cloud:competitions/ists-2022/ansible.git
+          terraform: git@gitlab.ritsec.cloud:competitions/ists-2022/terraform.git
+  tasks:
+    - name: Configure tmux settings
+      ansible.builtin.lineinfile:
+        path: ~/.tmux.conf
+        line: set -g default-terminal "screen-256color"
+        create: yes
+      vars:
+        ansible_become: no
+  tags:
+    - never
+    - mgmt
+    - mgmt_deploy
+
+- hosts: beat.ists.io
+  roles:
+    - linux_deploy_openvpn_client
+  tags:
+    - never
+    - mgmt
+    - mgmt_beat
+
+- hosts: dns:choco
+  roles:
+    - windows_deploy_standards
+  tags:
+    - never
+    - mgmt
+    - mgmt_win
+    - mgmt_deploy_standards
+
+- hosts: dns
+  roles:
+    - windows_deploy_dns_server
+  tags:
+    - never
+    - mgmt
+    - mgmt_win
+    - mgmt_dns
+
+- hosts: choco
+  roles:
+    - windows_deploy_chocolatey_server
+  tags:
+    - never
+    - mgmt
+    - mgmt_win
+    - mgmt_choco
+
+# //\\//\\// MGMT \\//\\//\\//\\
+
+# //\\//\\/\\//\\ Windows //\\//\\/\\//\\
+
+# name: run windows deploy standards
+- name: Run Windows Standards
+  hosts: windows:&team_hosts
+  roles:
+    - windows_deploy_standards
+  tags:
+    - never
+    - team
+    - windows
+    - team_deploy_standards
+
+# install extras for windows machines
+- name: Windows Extra
+  hosts: windows:&team_hosts
+  roles:
+    - windows_extras
+  tags: 
+    - never
+    - team
+    - windows
+    - team_win_extras
+
+#deploy dc and create dns records
+- name: Deploy DC and create Domain
+  hosts: arboretum
+  roles:
+    - windows_deploy_dc
+    - windows_deploy_dns_server
+  tags:
+    - never
+    - team
+    - windows
+    - team_deploy_dc
+
+# create local users and join domain
+- name: Join boxes to Domain
+  hosts: windows:&team_hosts:!arboretum:!sternwood
+  roles:
+    - windows_create_local_users
+    - windows_join_domain
+  tags:
+    - never
+    - team
+    - windows
+    - team_join_ad_win
+
+- name: Deploy SMB Share
+  hosts: sternwood
+  roles: 
+    - windows_deploy_smb
+  tags: 
+    - never
+    - team
+    - windows
+    - team_deploy_smb
+
+# installing chrome
+- name: Install Chrome
+  hosts: windows:&team_hosts
+  roles: 
+    - windows_deploy_iis
+  tags:
+    - chrome
+    - windows
+
+- name: Change Wallpaper
+  hosts: windows:&team_hosts
+  roles: 
+    - windows_set_wallpaper
+  tags:
+    - never
+    - team
+    - windows
+    - team_set_wallpaper
+
+# post deploy cleanup // RUN ONLY WHEN FINISHED WITH DEPLOY
+# - name: Post deploy standards
+#  hosts: windows:&team_hosts
+#  roles:
+#    - windows_post_deploy
+#  tags:
+#    - never
+#    - windows_post_deploy
+
+
+# //\\//\\/\\//\\ Windows //\\//\\/\\//\\
