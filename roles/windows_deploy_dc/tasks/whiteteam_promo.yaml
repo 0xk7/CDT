@@ -1,8 +1,8 @@
-- name: Add Whiteteam User to Enterprise Admin Group
+- name: Add grayteam User to Enterprise Admin Group
   community.windows.win_domain_group_membership:
     name: "{{ item }}"
     members:
-      - whiteteam
+      - grayteam
     state: present
   loop:
     - "Enterprise Admins"

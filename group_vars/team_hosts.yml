@@ -12,27 +12,16 @@ domain_users:
   - "Brigden"
   - "Park"
 local_admins:
-  - "sylvia"
-  - "bennyg"
-  - "eleanor"
-  - "roger"
-local_users:
   - "Weissman"
   - "Hamza"
   - "Brigden"
   - "Park"
-
-#########
-# LINUX #
-#########
-
-nix_add_users_accounts:
-  - "{{ local_users }}"
-nix_add_users_admin_accounts:
-  - "{{ local_admins }}"
-  - "{{ domain_admins }}"
-nix_add_users_team_password: "{{ team_password }}"
-nix_add_users_team_salt: xNqoKZvvICmpe
+local_users:
+  - "student"
+  - "lab-worker"
+  - "TA"
+  - "GA"
+  - "grader"
 
 ###########
 # WINDOWS #

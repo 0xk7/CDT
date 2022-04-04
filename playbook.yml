@@ -3,32 +3,32 @@
 
 # //\\//\\// MGMT \\//\\//\\//\\
 
-- hosts: dns:choco
-  roles:
-    - windows_deploy_standards
-  tags:
-    - never
-    - mgmt
-    - mgmt_win
-    - mgmt_deploy_standards
+# - hosts: dns:choco
+#   roles:
+#     - windows_deploy_standards
+#   tags:
+#     - never
+#     - mgmt
+#     - mgmt_win
+#     - mgmt_deploy_standards
 
-- hosts: dns
-  roles:
-    - windows_deploy_dns_server
-  tags:
-    - never
-    - mgmt
-    - mgmt_win
-    - mgmt_dns
+# - hosts: dns
+#   roles:
+#     - windows_deploy_dns_server
+#   tags:
+#     - never
+#     - mgmt
+#     - mgmt_win
+#     - mgmt_dns
 
-- hosts: choco
-  roles:
-    - windows_deploy_chocolatey_server
-  tags:
-    - never
-    - mgmt
-    - mgmt_win
-    - mgmt_choco
+# - hosts: choco
+#   roles:
+#     - windows_deploy_chocolatey_server
+#   tags:
+#     - never
+#     - mgmt
+#     - mgmt_win
+#     - mgmt_choco
 
 # //\\//\\// MGMT \\//\\//\\//\\
 
@@ -46,15 +46,15 @@
     - team_deploy_standards
 
 # install extras for windows machines
-- name: Windows Extra
-  hosts: windows:&team_hosts
-  roles:
-    - windows_extras
-  tags: 
-    - never
-    - team
-    - windows
-    - team_win_extras
+# - name: Windows Extra
+#   hosts: windows:&team_hosts
+#   roles:
+#     - windows_extras
+#   tags: 
+#     - never
+#     - team
+#     - windows
+#     - team_win_extras
 
 #deploy dc and create dns records
 - name: Deploy DC and create Domain
@@ -80,34 +80,24 @@
     - windows
     - team_join_ad_win
 
-- name: Deploy SMB Share
-  hosts: sternwood
-  roles: 
-    - windows_deploy_smb
-  tags: 
-    - never
-    - team
-    - windows
-    - team_deploy_smb
+# - name: Deploy SMB Share
+#   hosts: salsaritas
+#   roles: 
+#     - windows_deploy_smb
+#   tags: 
+#     - never
+#     - team
+#     - windows
+#     - team_deploy_smb
 
 # installing chrome
-- name: Install Chrome
-  hosts: windows:&team_hosts
-  roles: 
-    - windows_deploy_iis
-  tags:
-    - chrome
-    - windows
-
-- name: Change Wallpaper
-  hosts: windows:&team_hosts
-  roles: 
-    - windows_set_wallpaper
-  tags:
-    - never
-    - team
-    - windows
-    - team_set_wallpaper
+# - name: Install Chrome
+#   hosts: windows:&team_hosts
+#   roles: 
+#     - windows_deploy_iis
+#   tags:
+#     - chrome
+#     - windows
 
 # post deploy cleanup // RUN ONLY WHEN FINISHED WITH DEPLOY
 # - name: Post deploy standards

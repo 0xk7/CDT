@@ -1,13 +1,13 @@
 - name: Create directory structure
   ansible.windows.win_file:
-    path: C:\Troy
+    path: C:\Tickets
     state: directory
 
 - name: Add team share
   ansible.windows.win_share:
-    name: "Golden Fleece"
-    description: "Team Share"
-    path: C:\Troy
+    name: "Salsa's"
+    description: "Salsarita's Ticket Submission"
+    path: C:\Salsa
     list: yes
     full: Administrators
     read: Everyone
@@ -16,13 +16,3 @@
   ansible.windows.win_copy:
     src: files/sparta.txt
     dest: C:\Troy\sparta.txt
-
-- name: Create and copy score check file to team share
-  ansible.windows.win_copy:
-    src: files/info.txt
-    dest: C:\Troy\info.txt
-
-- name: Create and copy score check file to team share
-  ansible.windows.win_copy:
-    src: files/fleece.jpeg
-    dest: C:\Troy\fleece.jpeg

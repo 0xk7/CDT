@@ -4,26 +4,6 @@
 #     src: files/nop.zip
 #     dest: "{{ win_deploy_iis_working_dir }}/nop.zip"
 
-- name: Copy Over index.html
-  ansible.windows.win_copy:
-    src: files/index.html
-    dest: C:\inetpub\wwwroot\
-
-- name: Remove default htm file
-  ansible.windows.win_file:
-    path: C:\inetpub\wwwroot\iisstart.htm
-    state: absent
-
-- name: Copy Over Gaia
-  ansible.windows.win_copy:
-    src: files/Gaia.jpg
-    dest: C:\inetpub\wwwroot\
-
-- name: Remove default png
-  ansible.windows.win_file:
-    path: C:\inetpub\wwwroot\iisstart.png
-    state: absent
-
 # - name: Unzip nop.zip
 #   community.windows.win_unzip:
 #     src: "{{ win_deploy_iis_working_dir }}/nop.zip"
