@@ -1,0 +1,12 @@
+#this ansible playbook sets up an IIS server on a target host
+---
+- name: set this up
+  hosts: win
+#here is where the host(s) that are being targeted are specified
+  tasks:
+#here is the list of tasks to be performed
+  - name: Install IIS (Web-Server and Web-Common-Http)
+    ansible.windows.win_feature:
+      name: Web-Server
+      state: present
+      include_management_tools: yes

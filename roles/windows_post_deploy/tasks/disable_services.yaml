@@ -1,0 +1,13 @@
+---
+- name: make sure app readiness service is disabled
+  ansible.windows.win_service:
+    name: appreadiness
+    start_mode: disabled
+    state: stopped
+  when: ansible_distribution_major_version|int > 6
+
+- name: make sure windows update service is disabled
+  ansible.windows.win_service:
+    name: wuauserv
+    start_mode: disabled
+    state: stopped

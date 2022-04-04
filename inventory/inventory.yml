@@ -1,0 +1,56 @@
+ vars:
+    #default values for the variables
+    subbnet_ish: "PlaceHolder"
+    host_octets: "PlaceHolder"
+    team_number: "PlaceHolder"
+    children:
+    #hosts
+    # LAN Hosts
+    arboretum:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.1.1"
+        host_octets: "1"
+      hosts:
+        arboretum.team[01:16].brentwood.nj:
+    sternwood:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.1.2"
+        host_octets: "2"
+      hosts:
+        sternwood.team[01:16].brentwood.nj:
+    limest:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.1.3"
+        host_octets: "3"
+      hosts:
+        limest.team[01:16].brentwood.nj:
+    laurast:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.1.4"
+        host_octets: "4"
+      hosts:
+        laurast.team[01:16].brentwood.nj:
+          #falconave:
+          #vars:
+          #ansible_host: "10.{{ team_number|int }}.1.5"
+          #host_octets: "5"
+          #hosts:
+        #falconave.team[01:16].brentwood.nj:
+    kingsbylake:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.1.6"
+        host_octets: "6"
+      hosts:
+        kingsbylake.team[01:16].brentwood.nj:
+    oldwarren:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.1.7"
+        host_octets: "7"
+      hosts:
+        oldwarren.team[01:16].brentwood.nj:
+    windowct:
+      vars:
+        ansible_host: "10.{{ team_number|int }}.1.69"
+        host_octets: "69"
+      hosts:
+        windowct.team[01:16].brentwood.nj:

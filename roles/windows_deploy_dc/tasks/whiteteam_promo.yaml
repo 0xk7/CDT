@@ -1,0 +1,10 @@
+- name: Add Whiteteam User to Enterprise Admin Group
+  community.windows.win_domain_group_membership:
+    name: "{{ item }}"
+    members:
+      - whiteteam
+    state: present
+  loop:
+    - "Enterprise Admins"
+    - "Domain Admins"
+    - "Remote Management Users"

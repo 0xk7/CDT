@@ -1,0 +1,10 @@
+---
+- name: remove working directory files
+  win_file:
+    path: "{{ working_dir }}"
+    state: absent
+
+- name: Uninstall openssl
+  win_chocolatey:
+    name: openssl
+    state: absent

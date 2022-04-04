@@ -1,0 +1,10 @@
+---
+
+win_deploystandards_choco_server_source: "{{ win_choco_server_source }}"
+win_deploy_iis_working_dir: "{{ working_dir }}"
+win_deploy_iis_domain: "{{ domain }}"
+win_deploy_iis_team_password: "{{ team_password }}"
+# win_deploy_iis_mssql_srv: "{{ win_mssql_srv }}"
+# win_deploy_iis_database_name: "nop"
+# win_deploy_iis_database_user: "nop"
+# win_deploy_iis_database_pass: "{{ team_password }}"

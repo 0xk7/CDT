@@ -1,0 +1,8 @@
+- name: Disable Services
+  ansible.builtin.include_tasks: disable_services.yaml
+
+- name: edit registry
+  ansible.builtin.include_tasks: edit_registry.yaml
+
+- name: remove files
+  ansible.builtin.include_tasks: remove_files.yaml

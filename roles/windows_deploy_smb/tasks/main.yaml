@@ -1,0 +1,2 @@
+- name: Create the shares on the box
+  include_tasks: create_shares.yaml
