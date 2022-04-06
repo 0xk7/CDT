@@ -15,10 +15,10 @@ New-ADUser -Name pelletier -AccountPassword $pw -Passwordneverexpires $true -Ena
 Add-ADGroupMember -Identity "Domain Admins" -Members pelletier
 Add-ADGroupMember -Identity "Remote Desktop Users" -Members pelletier
 Add-ADGroupMember -Identity "Remote Management Users" -Members pelletier
-New-ADUser -Name munson -AccountPassword $pw -Passwordneverexpires $true -Enabled $true
-Add-ADGroupMember -Identity "Domain Admins" -Members munson
-Add-ADGroupMember -Identity "Remote Desktop Users" -Members munson
-Add-ADGroupMember -Identity "Remote Management Users" -Members munson
+New-ADUser -Name stackpole -AccountPassword $pw -Passwordneverexpires $true -Enabled $true
+Add-ADGroupMember -Identity "Domain Admins" -Members stackpole
+Add-ADGroupMember -Identity "Remote Desktop Users" -Members stackpole
+Add-ADGroupMember -Identity "Remote Management Users" -Members stackpole
 
 New-ADUser -Name Weissman -AccountPassword $pw -Passwordneverexpires $true -Enabled $true
 Add-ADGroupMember -Identity "Remote Desktop Users" -Members Weissman
